@@ -1,0 +1,70 @@
+<mvc:View
+	controllerName="sap.ui.demo.app.view.Detail"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:core="sap.ui.core"
+	xmlns="sap.m">
+
+	<!-- Navbutton may or may not be necessary -->
+	<Page
+		showNavButton="true"
+		navButtonPress="onNavBack"
+		class="sapUiFioriObjectPage"
+		title="{i18n>detailTitle}">
+		<!-- content tag is here for good practice but not necessary -->
+		<content>
+			<ObjectHeader
+				title="{Name}"
+				number="{
+					path: 'Price',
+					formatter: 'sap.ui.demo.app.util.Formatter.currencyValue'
+				}"
+				numberUnit="USD">
+				<attributes>
+					<ObjectAttribute text="{i18n>detailFromDate} {
+						path: 'ReleaseDate',
+						type: 'sap.ui.model.type.Date'
+						}" />
+					<ObjectAttribute text="{Description}" />
+				</attributes>
+				<firstStatus>
+					<ObjectStatus
+						text="{
+							path: 'DiscontinuedDate',
+							formatter: 'sap.ui.demo.app.util.Formatter.discontinuedStatusValue'
+						}"
+						state="{
+							path: 'DiscontinuedDate',
+							formatter: 'sap.ui.demo.app.util.Formatter.discontinuedStatusState'
+						}" />
+				</firstStatus>
+			</ObjectHeader>
+			<IconTabBar
+				select="onDetailSelect"
+				id="idIconTabBar">
+				<items>
+					<IconTabFilter
+						key="supplier"
+						text="{i18n>iconTabFilterSupplier}"
+						icon="sap-icon://supplier">
+						<content>
+							<core:Fragment fragmentName="sap.ui.demo.app.view.SupplierAddressForm" type="XML" />
+						</content>
+					</IconTabFilter>
+					<IconTabFilter
+						key="category"
+						text="{i18n>iconTabFilterCategory}"
+						icon="sap-icon://hint">
+						<content>
+							<core:Fragment fragmentName="sap.ui.demo.app.view.CategoryInfoForm" type="XML" />
+						</content>
+					</IconTabFilter>
+				</items>
+			</IconTabBar>
+		</content>
+		<footer>
+			<Bar>
+				<!-- Empty bar to match the master view visually -->
+			</Bar>
+		</footer>
+	</Page>
+</mvc:View>

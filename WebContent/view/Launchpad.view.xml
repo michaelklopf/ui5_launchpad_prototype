@@ -1,0 +1,30 @@
+<mvc:View
+	xmlns:mvc="sap.ui.core.mvc"
+	displayBlock="true"
+	controllerName="sap.ui.demo.app.view.Launchpad"
+	xmlns="sap.m">
+	<Page title="Launchpad" enableScrolling="false">
+	    <TileContainer
+	      id="container"
+	      tileDelete="handleTileDelete"
+	      tiles="{/TileCollection}">
+	      <StandardTile
+	        icon="sap-icon://{icon}"
+	        type="{type}"
+	        number="{number}"
+	        numberUnit="{numberUnit}"
+	        title="{title}"
+	        info="{info}"
+	        infoState="{infoState}" 
+	        press="toSplit"/>
+	    </TileContainer>
+	    <footer>
+	      <Toolbar>
+	        <ToolbarSpacer/>
+	          <Button text="Edit" press="handleEditPress" />
+	          <Button text="Busy state" press="handleBusyPress" />
+	        <ToolbarSpacer/>
+	      </Toolbar>
+	    </footer>
+	</Page>
+</mvc:View>
